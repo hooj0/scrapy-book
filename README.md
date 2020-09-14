@@ -7,7 +7,7 @@ https://bloogle.top/ blog crawler, crawl e-book.
 
 ## 准备
 
-- `python3`
+- `python3.5.2+`
 - `scrapy`
 
 ## 开始
@@ -30,3 +30,14 @@ cd worksapce
 D:\worksapce>scrapy startproject scrapy_book
 ```
 
+## 使用
+
+使用命令启动运行项目
+
+```shell
+
+```
+
+## 参考
+
+`scrapy` 官方文档 https://docs.scrapy.org/en/latest/intro/tutorial.html
