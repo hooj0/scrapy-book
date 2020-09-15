@@ -47,7 +47,9 @@ D:\work_private\scrapy_book>scrapy genspider book bloogle.top
 # 使用命令行的方式分析网页，可以进行表达式测试
 scrapy shell https://bloogle.top/
 
-# 存储抓取的数据
+# 运行爬虫
+scrapy crawl book
+# 运行爬虫，存储抓取的数据
 scrapy crawl book -o book.json
 ```
 
