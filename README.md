@@ -30,12 +30,25 @@ cd worksapce
 D:\worksapce>scrapy startproject scrapy_book
 ```
 
+### 生成代码
+
+`scrapy` 可以自动生成 `spider` 的代码，使用如下命令会在 `spider` 目录生成代码模板。
+
+```shell
+D:\work_private>cd scrapy_book
+D:\work_private\scrapy_book>scrapy genspider book bloogle.top
+```
+
 ## 使用
 
 使用命令启动运行项目
 
 ```shell
+# 使用命令行的方式分析网页，可以进行表达式测试
+scrapy shell https://bloogle.top/
 
+# 存储抓取的数据
+scrapy crawl book -o book.json
 ```
 
 ## 参考
