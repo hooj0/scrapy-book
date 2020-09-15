@@ -1,12 +1,39 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
+#!/usr/bin/env python3
+# encoding: utf-8
+# @author: hoojo
+# @email:    hoojo_@126.com
+# @github:   https://github.com/hooj0
+# @create date: 2020-09-12
+# @copyright by hoojo @2020
+# @changelog scrapy book item object
+
+
+# ===============================================================================
+# 标题：scrapy book core code
+# ===============================================================================
+# 使用：利用 scrapy 框架爬取博客的书籍
+# -------------------------------------------------------------------------------
+# 描述：爬取书单实体对象
+# -------------------------------------------------------------------------------
+
+
+# -------------------------------------------------------------------------------
+# 构建 scrapy 框架生成爬虫书籍实体对象
+# -------------------------------------------------------------------------------
 
 import scrapy
 
 
 class ScrapyBookItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    # 目录
+    folder = scrapy.Field()
+    # 类别
+    category = scrapy.Field()
+    # 书名
+    name = scrapy.Field()
+    # 作者
+    author = scrapy.Field()
+    # 下载链接
+    download_url = scrapy.Field()
+    # 书籍链接
+    link = scrapy.Field()
