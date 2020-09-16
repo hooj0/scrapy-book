@@ -23,4 +23,5 @@
 from scrapy.cmdline import execute
 
 
-execute(["scrapy", "crawl", "book", "-o", "book.jl"])
+#execute(["scrapy", "crawl", "book", "-o", "book.jl"])
+execute("scrapy crawl book".split(" "))
