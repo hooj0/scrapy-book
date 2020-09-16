@@ -12,9 +12,10 @@ BOT_NAME = 'scrapy_book'
 SPIDER_MODULES = ['scrapy_book.spiders']
 NEWSPIDER_MODULE = 'scrapy_book.spiders'
 
+FEED_EXPORT_ENCODING = 'utf-8'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'scrapy_book (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -25,7 +26,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 1
+# DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -61,11 +62,20 @@ DEFAULT_REQUEST_HEADERS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
 #}
 
+
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'scrapy_book.pipelines.ScrapyBookPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    #'scrapy_book.pipelines.ScrapyBookPipeline': 300,
+    'scrapy_book.pipelines.DownloadImgPipeline': 301,
+    #'scrapy_book.pipelines.DownloadFilePipeline': 302
+}
+
+# 开启图片、文件下载通道一定要配置各自的存储路径
+FILES_STORE = './books/file'
+IMAGES_STORE = './books/image'
+# 重定向下载
+#MEDIA_ALLOW_REDIRECTS = True
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
