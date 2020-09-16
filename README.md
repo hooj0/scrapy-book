@@ -49,8 +49,15 @@ scrapy shell https://bloogle.top/
 
 # 运行爬虫
 scrapy crawl book
+
 # 运行爬虫，存储抓取的数据
 scrapy crawl book -o book.json
+
+# 运行爬虫，存储抓取的数据，不分行存储
+scrapy crawl book -o book.jl
+
+# 处理存储中文编码
+scrapy crawl book -o book.jl -s FEED_EXPORT_ENCODING=utf-8
 ```
 
 ## 参考
