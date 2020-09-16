@@ -33,7 +33,11 @@ class ScrapyBookItem(scrapy.Item):
     name = scrapy.Field()
     # 作者
     author = scrapy.Field()
+    # 类别链接
+    category_url = scrapy.Field()
+    # 书籍链接
+    detail_url = scrapy.Field()
+    # 书籍封面
+    image = scrapy.Field()
     # 下载链接
     download_url = scrapy.Field()
-    # 书籍链接
-    link = scrapy.Field()
