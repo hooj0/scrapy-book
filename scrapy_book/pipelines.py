@@ -5,25 +5,87 @@
 
 
 # useful for handling different item types with a single interface
+from urllib.request import unquote
 from scrapy.pipelines.files import FilesPipeline
 from scrapy.pipelines.images import ImagesPipeline
 from urllib.parse import urlparse
-from urllib.request import unquote
-from os.path import basename, dirname, join
+from os.path import basename, dirname, join, abspath
+from scrapy.utils.project import get_project_settings
+from scrapy.exceptions import DropItem
+import logging
 import scrapy
+import shutil
+import os
 
 
-class ScrapyBookPipeline:
+class DuplicatesPipeline:
+
+    def __init__(self):
+        self.logger = logging.getLogger(__name__)
+        self.settings = get_project_settings()
+
+        self.files_store = self.settings["FILES_STORE"]
+        self.images_store = self.settings["IMAGES_STORE"]
+        self.images, self.books = self.files_name(dirname(self.files_store))
+
+        self.logger.info("existed images: %s", self.images)
+        self.logger.info("existed books: %s", self.books)
+
+    def files_name(self, file_dir):
+        images, books = {}, {}
+
+        for root, dirs, files in os.walk(file_dir):
+            for file in files:
+                self.logger.debug("find file: %s", file)
+
+                if os.path.splitext(file)[1] == '.jpg':
+                    images[file] = join(root, file)
+                elif os.path.splitext(file)[1] == '.mobi':
+                    books[file] = join(root, file)
+
+        return images, books
 
     def process_item(self, item, spider):
+        img = get_full_name(item, "tmp.jpg")
+        book = get_full_name(item, "tmp.mobi")
 
-        return item
+        img_full_path = join(self.images_store, get_full_path(item, img))
+        book_full_path = join(self.files_store, get_full_path(item, book))
+
+        if img in self.images:
+            self.move_file(self.images[img], img_full_path)
+            raise DropItem("Duplicate img item found: %r" % img)
+        elif book in self.books:
+            self.move_file(self.books[book], book_full_path)
+            raise DropItem("Duplicate book item found: %r" % book)
+        else:
+            self.images[img] = img_full_path
+            self.books[book] = book_full_path
+            return item
+
+    def move_file(self, existed_file, process_file):
+
+        existed_file_level = abspath(existed_file).count("\\")
+        process_file_level = abspath(process_file).count("\\")
+
+        if existed_file_level < process_file_level:
+            shutil.move(abspath(existed_file), abspath(process_file))
+            self.logger.info("(%s) ====>>>> (%s)" % (existed_file, process_file))
+        else:
+            self.logger.info("(%s) dont move: (%s)" % (existed_file, process_file))
 
 
 class DownloadImgPipeline(ImagesPipeline):
 
+    logger = logging.getLogger(__name__)
+
     def get_media_requests(self, item, info):
-        request = scrapy.Request(url=item['image'])
+        # 获取目录层级，提取优先级
+        full_path = join(item["folder"], item["category"])
+        level = full_path.count("\\")
+
+        # 设置优先级
+        request = scrapy.Request(url=item['image'], priority=level)
         request.meta["item"] = item
 
         yield request
@@ -53,19 +115,13 @@ class DownloadImgPipeline(ImagesPipeline):
         '''
 
         item = request.meta["item"]
-        # print("item: ", item)
 
-        file_suffix = filename.split(".")[-1]
-        full_name = "%s-%s.%s" % (item["author"], item["name"], file_suffix)
-        full_path = join(item["folder"], item["category"], full_name)
-        print("full_path: ", full_path)
-
-        return full_path
+        return get_full_path(item, filename)
 
     # 下载完成
     def item_completed(self, results, item, info):
         # 结果 True,{url path checksum}
-        print(results)
+        self.logger.info(results)
 
         # process_item中的return item 作用一致
         return item
@@ -73,19 +129,36 @@ class DownloadImgPipeline(ImagesPipeline):
 
 class DownloadFilePipeline(FilesPipeline):
 
-    def get_media_requests(self, item, info):
+    logger = logging.getLogger(__name__)
 
+    def get_media_requests(self, item, info):
         print("download: ", item['download_url'])
-        yield scrapy.Request(url=item['download_url'])
+
+        request = scrapy.Request(item['download_url'])
+        request.meta["item"] = item
+
+        yield request
 
     def file_path(self, request, response=None, info=None):
+        item = request.meta["item"]
 
-        path = urlparse(request.url).path
-        print("path: ", path)
-
-        # return '%s/%s' % (basename(dirname(path)), basename(path))
-        return join(basename(dirname(path)), basename(path))
+        return get_full_path(item, "tmp.mobi")
 
     def item_completed(self, results, item, info):
-        print(results)
+        self.logger.info(results)(results)
+
         return item
+
+
+def get_full_name(item, filename):
+    file_suffix = filename.split(".")[-1]
+    full_name = "%s-%s.%s" % (item["author"], item["name"], file_suffix)
+
+    return full_name
+
+
+def get_full_path(item, filename):
+    full_path = join(item["folder"], item["category"], get_full_name(item, filename))
+
+    logging.debug("full path: %s", full_path)
+    return full_path
