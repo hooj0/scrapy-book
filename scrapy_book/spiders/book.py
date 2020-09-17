@@ -21,6 +21,7 @@
 # 构建 scrapy 框架生成爬虫书籍实体对象
 # -------------------------------------------------------------------------------
 import scrapy
+import logging
 from _collections import deque
 from scrapy_book.items import ScrapyBookItem
 
@@ -48,9 +49,13 @@ class BookSpider(scrapy.Spider):
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
     }
 
+    logger = logging.getLogger(__name__)
+
     def parse(self, response):
 
-        for line in response.css('li.menu-item-object-category:not(li.menu-item-has-children)'):
+        # for line in response.css('li.menu-item-object-category:not(li.menu-item-has-children)'):
+        # for line in response.css('li.menu-item-object-category'):
+        for line in response.css('li#menu-item-2197, li#menu-item-2197 li.menu-item-object-category'):
             queue = deque([])
             self.find_parent(line, queue)
 
@@ -64,7 +69,7 @@ class BookSpider(scrapy.Spider):
 
                 yield request
 
-            break
+            #break
 
     def parse_book_list(self, response, book):
 
@@ -82,13 +87,13 @@ class BookSpider(scrapy.Spider):
             item["folder"] = book["folder"]
             item["category"] = book["category"]
             item["category_url"] = book["category_url"]
-            item["name"] = titles[0].strip().replace("《", "").replace("》", "")
-            item["author"] = titles[1].strip()
+            item["name"] = titles[0].strip().replace("《", "").replace("》", "").replace(":", "：")
+            item["author"] = titles[1].strip().replace(":", "：")
             item["detail_url"] = detail_url
             item["image"] = article.css("a.post-thumbnail img::attr(src)").get()
 
             if detail_url is not None:
-                request = scrapy.Request(detail_url, headers=self.headers, callback=self.parse_book_detail)
+                request = scrapy.Request(detail_url, headers=self.headers, callback=self.parse_book_detail, dont_filter=True)
                 request.cb_kwargs["item"] = item
 
                 yield request
