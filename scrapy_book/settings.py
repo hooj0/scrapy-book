@@ -68,17 +68,17 @@ DEFAULT_REQUEST_HEADERS = {
 ITEM_PIPELINES = {
     'scrapy_book.pipelines.DuplicatesPipeline': 300,
     'scrapy_book.pipelines.DownloadImgPipeline': 301,
-    #'scrapy_book.pipelines.DownloadFilePipeline': 302
+    'scrapy_book.pipelines.DownloadFilePipeline': 302
 }
 
 # 开启图片、文件下载通道一定要配置各自的存储路径
-FILES_STORE = './books/file'
-IMAGES_STORE = './books/image'
+FILES_STORE = './books'
+IMAGES_STORE = './books'
 
 # 重定向下载
 #MEDIA_ALLOW_REDIRECTS = True
 
-LOG_LEVEL="INFO"
+LOG_LEVEL = "INFO"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
