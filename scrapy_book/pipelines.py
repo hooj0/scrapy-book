@@ -9,7 +9,7 @@ from urllib.request import unquote
 from scrapy.pipelines.files import FilesPipeline
 from scrapy.pipelines.images import ImagesPipeline
 from urllib.parse import urlparse
-from os.path import basename, dirname, join, abspath
+from os.path import basename, dirname, join, abspath, exists
 from scrapy.utils.project import get_project_settings
 from scrapy.exceptions import DropItem
 import logging
@@ -20,12 +20,16 @@ import os
 
 class DuplicatesPipeline:
 
+    download_img_pipeline = "scrapy_book.pipelines.DownloadImgPipeline"
+    download_file_pipeline = "scrapy_book.pipelines.DownloadFilePipeline"
+
     def __init__(self):
         self.logger = logging.getLogger(__name__)
         self.settings = get_project_settings()
 
         self.files_store = self.settings["FILES_STORE"]
         self.images_store = self.settings["IMAGES_STORE"]
+        self.item_pipelines = self.settings["ITEM_PIPELINES"]
         self.images, self.books = self.files_name(dirname(self.files_store))
 
         self.logger.info("existed images: %s", self.images)
@@ -52,27 +56,61 @@ class DuplicatesPipeline:
         img_full_path = join(self.images_store, get_full_path(item, img))
         book_full_path = join(self.files_store, get_full_path(item, book))
 
-        if img in self.images:
-            self.move_file(self.images[img], img_full_path)
-            raise DropItem("Duplicate img item found: %r" % img)
-        elif book in self.books:
-            self.move_file(self.books[book], book_full_path)
-            raise DropItem("Duplicate book item found: %r" % book)
+        if self.download_img_pipeline in self.item_pipelines and self.download_file_pipeline in self.item_pipelines:
+            processed = False
+            if img in self.images and book in self.books:
+                self.move_file(self.images[img], img_full_path)
+                self.move_file(self.books[book], book_full_path)
+                raise DropItem("Duplicate item found: %r" % img)
+
+            if img in self.images:
+                self.move_file(self.images[img], img_full_path)
+                item["img_downloaded"] = True
+            else:
+                self.images[img] = img_full_path
+                processed = True
+
+            if book in self.books:
+                self.move_file(self.books[book], book_full_path)
+                item["file_downloaded"] = True
+            else:
+                self.books[book] = book_full_path
+                processed = True
+
+            if processed:
+                return item
+
+        elif self.download_img_pipeline in self.item_pipelines:
+            if img in self.images:
+                self.move_file(self.images[img], img_full_path)
+                raise DropItem("Duplicate item found: %r" % img)
+            else:
+                self.images[img] = img_full_path
+                return item
+
+        elif self.download_file_pipeline in self.item_pipelines:
+            if book in self.books:
+                self.move_file(self.books[book], book_full_path)
+                raise DropItem("Duplicate item found: %r" % book)
+            else:
+                self.books[book] = book_full_path
+                return item
         else:
-            self.images[img] = img_full_path
-            self.books[book] = book_full_path
             return item
 
     def move_file(self, existed_file, process_file):
-
         existed_file_level = abspath(existed_file).count("\\")
         process_file_level = abspath(process_file).count("\\")
 
         if existed_file_level < process_file_level:
-            shutil.move(abspath(existed_file), abspath(process_file))
-            self.logger.info("(%s) ====>>>> (%s)" % (existed_file, process_file))
+            if exists(abspath(existed_file)):
+                if not exists(abspath(dirname(process_file))):
+                    os.makedirs(abspath(dirname(process_file)))
+
+                shutil.move(abspath(existed_file), abspath(process_file))
+                self.logger.info("(%s) ====>> (%s)" % (existed_file, process_file))
         else:
-            self.logger.info("(%s) dont move: (%s)" % (existed_file, process_file))
+            self.logger.info("(%s) don't move: (%s)" % (existed_file, process_file))
 
 
 class DownloadImgPipeline(ImagesPipeline):
@@ -80,6 +118,10 @@ class DownloadImgPipeline(ImagesPipeline):
     logger = logging.getLogger(__name__)
 
     def get_media_requests(self, item, info):
+        if item.get("img_downloaded", False):
+            return None
+        print("download img: ", unquote(item['image']))
+
         # 获取目录层级，提取优先级
         full_path = join(item["folder"], item["category"])
         level = full_path.count("\\")
@@ -113,7 +155,6 @@ class DownloadImgPipeline(ImagesPipeline):
         # 获取路径的最后一个文件夹
         print("basename dirname: ", basename(dirname(path)))
         '''
-
         item = request.meta["item"]
 
         return get_full_path(item, filename)
@@ -132,9 +173,16 @@ class DownloadFilePipeline(FilesPipeline):
     logger = logging.getLogger(__name__)
 
     def get_media_requests(self, item, info):
-        print("download: ", item['download_url'])
+        if item.get("file_downloaded", False):
+            return None
+        print("download file: ", item['download_url'])
 
-        request = scrapy.Request(item['download_url'])
+        # 获取目录层级，提取优先级
+        full_path = join(item["folder"], item["category"])
+        level = full_path.count("\\")
+
+        # 设置优先级
+        request = scrapy.Request(url=item['download_url'], priority=level)
         request.meta["item"] = item
 
         yield request
@@ -145,8 +193,8 @@ class DownloadFilePipeline(FilesPipeline):
         return get_full_path(item, "tmp.mobi")
 
     def item_completed(self, results, item, info):
-        self.logger.info(results)(results)
 
+        self.logger.info(results)
         return item
 
 
@@ -159,6 +207,6 @@ def get_full_name(item, filename):
 
 def get_full_path(item, filename):
     full_path = join(item["folder"], item["category"], get_full_name(item, filename))
-
     logging.debug("full path: %s", full_path)
+
     return full_path
