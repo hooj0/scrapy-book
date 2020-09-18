@@ -41,3 +41,7 @@ class ScrapyBookItem(scrapy.Item):
     image = scrapy.Field()
     # 下载链接
     download_url = scrapy.Field()
+    # 书籍已下载
+    file_downloaded = scrapy.Field()
+    # 图片已下载
+    img_downloaded = scrapy.Field()
