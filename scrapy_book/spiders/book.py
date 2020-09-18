@@ -69,8 +69,6 @@ class BookSpider(scrapy.Spider):
 
                 yield request
 
-            #break
-
     def parse_book_list(self, response, book):
 
         for article in response.css("article"):
@@ -131,6 +129,7 @@ class BookSpider(scrapy.Spider):
         return titles
 
     def find_parent(self, selector, queue):
+
         node = selector.xpath("../..")
         text = node.xpath("a/text()").get()
         # text = node.css("a::text").get()
