@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ef03bfb-b97b-45f8-849e-a0bb25073d15" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy_book/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_book/items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy_book/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_book/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy_book/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_book/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy_book/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_book/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy_book/spiders/book.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_book/spiders/book.py" afterDir="false" />
-    </list>
+    <list default="true" id="5ef03bfb-b97b-45f8-849e-a0bb25073d15" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/scrapy_book/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="89">
-              <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+              <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -316,12 +309,12 @@
       <option name="presentableId" value="Default" />
       <updated>1600053948484</updated>
       <workItem from="1600053949991" duration="26659000" />
-      <workItem from="1600143207892" duration="103869000" />
+      <workItem from="1600143207892" duration="104946000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130528000" />
+    <option name="totallyTimeSpent" value="131605000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -334,7 +327,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="5" />
-      <window_info anchor="bottom" x="0" y="22" width="1440" height="838" id="Run" order="8" sideWeight="0.49930555" visible="true" weight="0.54607046" />
+      <window_info anchor="bottom" x="0" y="22" width="1440" height="838" id="Run" order="8" sideWeight="0.49930555" weight="0.54607046" />
       <window_info anchor="bottom" id="Terminal" order="4" />
       <window_info id="Designer" order="1" />
       <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.3452722" />
@@ -599,7 +592,7 @@
     <entry file="file://$PROJECT_DIR$/scrapy_book/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="89">
-          <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
         </state>
       </provider>
     </entry>
