@@ -26,7 +26,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-# DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 2
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -72,13 +72,14 @@ ITEM_PIPELINES = {
 }
 
 # 开启图片、文件下载通道一定要配置各自的存储路径
-FILES_STORE = './books'
-IMAGES_STORE = './books'
+FILES_STORE = 'files/books'#/books
+IMAGES_STORE = 'files/books'#/images
 
 # 重定向下载
 #MEDIA_ALLOW_REDIRECTS = True
 
-LOG_LEVEL = "INFO"
+# 日志级别
+LOG_LEVEL = 'INFO'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
