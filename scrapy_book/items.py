@@ -15,15 +15,12 @@
 # -------------------------------------------------------------------------------
 # 描述：爬取书单实体对象
 # -------------------------------------------------------------------------------
+import scrapy
 
 
 # -------------------------------------------------------------------------------
 # 构建 scrapy 框架生成爬虫书籍实体对象
 # -------------------------------------------------------------------------------
-
-import scrapy
-
-
 class ScrapyBookItem(scrapy.Item):
     # 目录
     folder = scrapy.Field()
@@ -45,3 +42,19 @@ class ScrapyBookItem(scrapy.Item):
     file_downloaded = scrapy.Field()
     # 图片已下载
     img_downloaded = scrapy.Field()
+
+
+# -------------------------------------------------------------------------------
+# 构建 scrapy 框架生成爬虫实体对象
+# -------------------------------------------------------------------------------
+class RenameBookItem(scrapy.Item):
+    # 文件名
+    filename = scrapy.Field()
+    # 作者
+    author = scrapy.Field()
+    # 书籍
+    book_name = scrapy.Field()
+    # 真实名称
+    real_name = scrapy.Field()
+    # url
+    url = scrapy.Field()
