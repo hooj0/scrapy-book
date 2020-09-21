@@ -60,6 +60,27 @@ scrapy crawl book -o book.jl
 scrapy crawl book -o book.jl -s FEED_EXPORT_ENCODING=utf-8
 ```
 
+## 清单
+
+在执行爬虫下载图片文件时出现错误代码，如下：
+
+```shell
+    from PIL import Image
+ModuleNotFoundError: No module named 'PIL'
+```
+
+解决办法安装 `pillow`
+
+```shell
+pip install pillow
+
+# 已经安装过了，这时可以先卸载，获取最新的pillow
+# 运行卸载命令:
+pip uninstall pillow
+```
+
+
+
 ## 参考
 
 `scrapy` 官方文档 https://docs.scrapy.org/en/latest/intro/tutorial.html
