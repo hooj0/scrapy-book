@@ -23,5 +23,6 @@
 from scrapy.cmdline import execute
 
 
-execute(["scrapy", "crawl", "book", "-o", "book.jl"])
-#execute("scrapy crawl book".split(" "))
+# execute(["scrapy", "crawl", "book", "-o", "book.jl"])
+execute("scrapy crawl book".split(" "))
+#execute("scrapy crawl rename -o rename.jl".split(" "))
