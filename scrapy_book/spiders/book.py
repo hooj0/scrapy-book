@@ -15,17 +15,15 @@
 # -------------------------------------------------------------------------------
 # 描述：爬取书单实体对象
 # -------------------------------------------------------------------------------
-
-
-# -------------------------------------------------------------------------------
-# 构建 scrapy 框架生成爬虫书籍实体对象
-# -------------------------------------------------------------------------------
 import scrapy
 import logging
 from _collections import deque
 from scrapy_book.items import ScrapyBookItem
 
 
+# -------------------------------------------------------------------------------
+# 构建 scrapy 框架生成爬虫书籍实体对象
+# -------------------------------------------------------------------------------
 class BookSpider(scrapy.Spider):
 
     """
@@ -41,21 +39,21 @@ class BookSpider(scrapy.Spider):
     closed：关闭spider
     """
 
-    name = 'book'
-    allowed_domains = ['bloogle.top']
-    start_urls = ['http://bloogle.top/']
+    name = "book"
+    allowed_domains = ["bloogle.top"]
+    start_urls = ["http://bloogle.top/"]
 
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36",
     }
 
     logger = logging.getLogger(__name__)
 
     def parse(self, response):
 
-        # for line in response.css('li.menu-item-object-category:not(li.menu-item-has-children)'):
-        # for line in response.css('li.menu-item-object-category'):
-        for line in response.css('li#menu-item-2197, li#menu-item-2197 li.menu-item-object-category'):
+        # for line in response.css("li#menu-item-2197, li#menu-item-2197 li.menu-item-object-category"):
+        # for line in response.css("li.menu-item-object-category:not(li.menu-item-has-children)"):
+        for line in response.css("li.menu-item-object-category"):
             queue = deque([])
             self.find_parent(line, queue)
 
@@ -78,15 +76,15 @@ class BookSpider(scrapy.Spider):
             title = title_node.css("::text").get()
 
             titles = self.get_book_name_author(title)
-            print("title: ", title)
+            self.logger.debug("title: %s", title)
 
             item = ScrapyBookItem()
 
             item["folder"] = book["folder"]
             item["category"] = book["category"]
             item["category_url"] = book["category_url"]
-            item["name"] = titles[0].strip().replace("《", "").replace("》", "").replace(":", "：")
-            item["author"] = titles[1].strip().replace(":", "：")
+            item["name"] = titles[0].replace("《", "").replace("》", "").replace(":", "：").strip()
+            item["author"] = titles[1].replace(":", "：").strip()
             item["detail_url"] = detail_url
             item["image"] = article.css("a.post-thumbnail img::attr(src)").get()
 
@@ -98,7 +96,7 @@ class BookSpider(scrapy.Spider):
 
         next_page = response.css("nav.pagination a.next::attr(href)").get()
         if next_page is not None:
-            print("next page:", next_page)
+            self.logger.debug("next page: %s", next_page)
             request = scrapy.Request(next_page, headers=self.headers, callback=self.parse_book_list)
             request.cb_kwargs["book"] = book
 
