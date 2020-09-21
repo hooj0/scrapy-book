@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ef03bfb-b97b-45f8-849e-a0bb25073d15" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrapy_book/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_book/items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrapy_book/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_book/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrapy_book/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_book/pipelines.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrapy_book/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_book/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrapy_book/spiders/book.py" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy_book/spiders/book.py" afterDir="false" />
@@ -15,15 +17,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/scrapy_book$main.coverage" NAME="main Coverage Results" MODIFIED="1600392553062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scrapy_book" />
+    <SUITE FILE_PATH="coverage/scrapy_book$main.coverage" NAME="main Coverage Results" MODIFIED="1600650511204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scrapy_book" />
+    <SUITE FILE_PATH="coverage/scrapy_book$rename.coverage" NAME="rename Coverage Results" MODIFIED="1600416365076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scrapy_book/spiders" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scrapy_book/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="4" />
+            <state relative-caret-position="89">
+              <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -31,8 +34,8 @@
       <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrapy_book/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1748">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="291">
+              <caret line="102" column="63" selection-start-line="102" selection-start-column="63" selection-end-line="102" selection-end-column="63" />
               <folding>
                 <element signature="e#238#272#0" expanded="true" />
               </folding>
@@ -43,8 +46,8 @@
       <file leaf-file-name="book.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrapy_book/spiders/book.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1738">
-              <caret line="131" selection-start-line="131" selection-end-line="131" />
+            <state relative-caret-position="212">
+              <caret line="110" column="26" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
               <folding>
                 <element signature="e#809#822#0" expanded="true" />
               </folding>
@@ -55,8 +58,8 @@
       <file leaf-file-name="items.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrapy_book/items.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+            <state relative-caret-position="588">
+              <caret line="57" column="13" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -64,8 +67,20 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrapy_book/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+            <state relative-caret-position="187">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rename.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrapy_book/spiders/rename.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="42" column="87" selection-start-line="42" selection-start-column="87" selection-end-line="42" selection-end-column="87" />
+              <folding>
+                <element signature="e#632#641#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,7 +107,11 @@
       <find>media_downloaded</find>
       <find>file_downloaded</find>
       <find>downloading</find>
+      <find>'</find>
     </findStrings>
+    <replaceStrings>
+      <replace>&quot;</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -102,11 +121,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/scrapy_book/middlewares.py" />
-        <option value="$PROJECT_DIR$/scrapy_book/main.py" />
         <option value="$PROJECT_DIR$/scrapy_book/book.jl" />
         <option value="$PROJECT_DIR$/scrapy_book/items.py" />
-        <option value="$PROJECT_DIR$/scrapy_book/spiders/book.py" />
+        <option value="$PROJECT_DIR$/scrapy_book/main.py" />
+        <option value="$PROJECT_DIR$/scrapy_book/spiders/rename.py" />
         <option value="$PROJECT_DIR$/scrapy_book/pipelines.py" />
+        <option value="$PROJECT_DIR$/scrapy_book/spiders/book.py" />
         <option value="$PROJECT_DIR$/scrapy_book/settings.py" />
       </list>
     </option>
@@ -150,6 +170,12 @@
               <item name="scrapy_book" type="462c0819:PsiDirectoryNode" />
               <item name="scrapy_book" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="scrapy_book" type="b2602c69:ProjectViewProjectNode" />
+              <item name="scrapy_book" type="462c0819:PsiDirectoryNode" />
+              <item name="scrapy_book" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -188,7 +214,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -227,6 +253,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="rename" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="scrapy_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scrapy_book/spiders" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scrapy_book/spiders/rename.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -249,9 +294,14 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.rename" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.rename" />
       </list>
     </recent_temporary>
   </component>
@@ -266,16 +316,15 @@
       <option name="presentableId" value="Default" />
       <updated>1600053948484</updated>
       <workItem from="1600053949991" duration="26659000" />
-      <workItem from="1600143207892" duration="74258000" />
+      <workItem from="1600143207892" duration="103869000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100917000" />
+    <option name="totallyTimeSpent" value="130528000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="right" id="JuliaSciView" order="0" />
@@ -285,10 +334,10 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="5" />
-      <window_info anchor="bottom" x="0" y="22" width="1440" height="838" id="Run" order="8" sideWeight="0.49930555" weight="0.54607046" />
+      <window_info anchor="bottom" x="0" y="22" width="1440" height="838" id="Run" order="8" sideWeight="0.49930555" visible="true" weight="0.54607046" />
       <window_info anchor="bottom" id="Terminal" order="4" />
       <window_info id="Designer" order="1" />
-      <window_info content_ui="combo" id="Project" order="2" weight="0.27077365" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.3452722" />
       <window_info anchor="bottom" id="Docker" order="1" />
       <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="right" id="SciView" order="1" />
@@ -303,33 +352,6 @@
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="7" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" id="JuliaSciView" order="0" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="1" />
-      <window_info active="true" anchor="bottom" x="0" y="22" width="1440" height="838" id="Run" order="8" sideWeight="0.49930555" visible="true" weight="0.54607046" />
-      <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.27077365" />
-      <window_info anchor="right" id="SciView" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Find" order="7" />
-      <window_info id="Designer" order="1" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
-      <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Database" order="2" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.50069445" side_tool="true" weight="0.5992116" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="5" />
-      <window_info anchor="bottom" id="Message" order="6" />
-      <window_info anchor="bottom" id="Messages" order="0" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info id="Favorites" order="0" side_tool="true" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -500,51 +522,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrapy_book/items.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scrapy_book/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scrapy_book/book.jl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-205">
+        <state relative-caret-position="42">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrapy_book/spiders/book.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/scrapy/exceptions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1738">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
+        <state relative-caret-position="-57">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy_book/spiders/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/scrapy/spiders/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy_book/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="57" column="13" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy_book/spiders/rename.jl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy_book/rename.jl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy_book/spiders/rename.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="42" column="87" selection-start-line="42" selection-start-column="87" selection-end-line="42" selection-end-column="87" />
           <folding>
-            <element signature="e#809#822#0" expanded="true" />
+            <element signature="e#632#641#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scrapy_book/pipelines.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1748">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="291">
+          <caret line="102" column="63" selection-start-line="102" selection-start-column="63" selection-end-line="102" selection-end-column="63" />
           <folding>
             <element signature="e#238#272#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy_book/spiders/book.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="110" column="26" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
+          <folding>
+            <element signature="e#809#822#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy_book/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scrapy_book/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="4" />
+        <state relative-caret-position="89">
+          <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
         </state>
       </provider>
     </entry>
